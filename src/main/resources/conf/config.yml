@@ -1,0 +1,129 @@
+### ANY CHANGES TO THIS FILE DOES NOT REQUIRE A RESTART ###
+
+#This will create this metric in all the tiers, under this path
+metricPrefix: Custom Metrics|Bitbucket
+
+#This will create it in specific Tier/Component. Make sure to replace <COMPONENT_ID> with the appropriate one from your environment.
+#To find the <COMPONENT_ID> in your environment, please follow the screenshot https://docs.appdynamics.com/display/PRO42/Build+a+Monitoring+Extension+Using+Java
+#metricPrefix: Server|Component:<COMPONENT_ID>|Custom Metrics|Bitbucket
+
+# List of Bitbucket Instances
+instances:
+  - host: "localhost"
+    port: 9987
+    username: "monitorRole"
+    password: "password123"
+    #encryptedPassword:
+    #encryptionKey:
+    displayName: "LocalBitbucket"  #displayName is a REQUIRED field for  level metrics.
+
+
+# number of concurrent tasks.
+# This doesn't need to be changed unless many instances are configured
+numberOfThreads: 10
+
+
+# The configuration of different metrics from various mbeans of bitbucket server
+# For most cases, the mbean configuration does not need to be changed.
+# For detailed description on stats please have a look at https://confluence.atlassian.com/bitbucketserver/enabling-jmx-counters-for-performance-monitoring-776640189.html
+mbeans:
+  # This mbean is to get ClusterLocks related metrics.
+  - objectName: "com.atlassian.bitbucket:name=ClusterLocks"
+    metrics:
+      include:
+        - LockedCount : "LockedCount"
+        - TotalAcquiredCount : "TotalAcquiredCount"
+        - TotalAcquireErrorCount : "TotalAcquireErrorCount"
+        - TotalReleasedCount : "TotalReleasedCount"
+        - TotalReleaseErrorCount : "TotalReleaseErrorCount"
+        - TotalAcquireTimeMillis : "TotalAcquireTimeMillis"
+        - QueuedThreadCount : "QueuedThreadCount"
+      #exclude:
+      #  - LockedCount : "LockedCount"
+
+  - objectName: "com.atlassian.bitbucket:name=CommandTickets"
+    #aggregation: true #uncomment this only if you want the extension to do aggregation for all the metrics in this mbean for a cluster
+    metrics:
+      include:
+        - Available : "Available"
+        - Used : "Used"
+        - Total : "Total"
+        - QueuedRequests : "QueuedRequests"
+
+  - objectName: "com.atlassian.bitbucket:name=EventStatistics"
+    metrics:
+      include:
+        - DispatchedCount : "DispatchedCount"
+        - PublishedCount : "PublishedCount"
+        - QueueCapacity : "QueueCapacity"
+        - QueueLength : "QueueLength"
+        - RejectedCount : "RejectedCount"
+        - RemainingQueueCapacity : "RemainingQueueCapacity"
+
+  - objectName: "com.atlassian.bitbucket:name=HostingTickets"
+    #aggregation: true #uncomment this only if you want the extension to do aggregation for all the metrics in this mbean for a cluster
+    metrics:
+      include:
+        - Available : "Available"
+        - Used : "Used"
+        - Total : "Total"
+        - QueuedRequests : "QueuedRequests"
+
+  - objectName: "com.atlassian.bitbucket:name=Projects"
+    #aggregation: true #uncomment this only if you want the extension to do aggregation for all the metrics in this mbean for a cluster
+    metrics:
+      include:
+        - Count : "Count"
+
+  - objectName: "com.atlassian.bitbucket:name=Repositories"
+    metrics:
+      include:
+        - Count : "Count"
+
+  - objectName: "com.atlassian.bitbucket:name=ScmStatistics"
+    metrics:
+      include:
+        - Pulls : "Pulls"
+        - Pushes : "Pushes"
+
+  - objectName: "com.atlassian.bitbucket:name=SshSessions"
+    metrics:
+      include:
+        - ActiveSessionCount : "ActiveSessionCount"
+        - SessionCreatedCount : "SessionCreatedCount"
+        - SessionExceptionCount : "SessionExceptionCount"
+        - MaxActiveSessionCount : "MaxActiveSessionCount"
+        - SessionClosedCount : "SessionClosedCount"
+
+  - objectName: "com.atlassian.bitbucket.thread-pools:name=EventThreadPool"
+    metrics:
+      include:
+        - QueueLength : "QueueLength"
+        - MaximumPoolSize : "MaximumPoolSize"
+        - PoolSize : "PoolSize"
+        - ActiveCount : "ActiveCount"
+        - LargestPoolSize : "LargestPoolSize"
+        - TaskCount : "TaskCount"
+        - CompletedTaskCount : "CompletedTaskCount"
+
+  - objectName: "com.atlassian.bitbucket.thread-pools:name=IoPumpThreadPool"
+    metrics:
+      include:
+        - QueueLength : "QueueLength"
+        - MaximumPoolSize : "MaximumPoolSize"
+        - PoolSize : "PoolSize"
+        - ActiveCount : "ActiveCount"
+        - LargestPoolSize : "LargestPoolSize"
+        - TaskCount : "TaskCount"
+        - CompletedTaskCount : "CompletedTaskCount"
+
+  - objectName: "com.atlassian.bitbucket.thread-pools:name=ScheduledThreadPool"
+    metrics:
+      include:
+        - QueueLength : "QueueLength"
+        - MaximumPoolSize : "MaximumPoolSize"
+        - PoolSize : "PoolSize"
+        - ActiveCount : "ActiveCount"
+        - LargestPoolSize : "LargestPoolSize"
+        - TaskCount : "TaskCount"
+        - CompletedTaskCount : "CompletedTaskCount"
