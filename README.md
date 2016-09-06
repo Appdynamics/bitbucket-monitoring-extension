@@ -24,10 +24,13 @@ To know more about JMX, please follow the below link
 Before configuring the extension, please make sure to run the below steps to check if the set up is correct.
 
 1. Telnet into your Bitbucket server from the box where the extension is deployed.
-       telnet <hostname> <port>
-
-       <port> - It is the jmxremote.port specified.
-        <hostname> - IP address
+       ```
+          telnet <hostname> <port>
+          
+          <port> - It is the jmxremote.port specified.
+          <hostname> - IP address
+       ``` 
+       
 
     If telnet works, it confirm the access to the Bitbucket server.
 
