@@ -210,7 +210,7 @@ Note : Please make sure to not use tab (\t) while editing yaml files. You may wa
     ```
 
 ## Custom Dashboard ##
-![]()
+![](https://github.com/Appdynamics/bitbucket-monitoring-extension/blob/master/Bitbucket_Dashboard.png?raw=true)
 
 ## Contributing ##
 
