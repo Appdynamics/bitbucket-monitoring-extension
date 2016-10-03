@@ -1,7 +1,7 @@
     <monitor>
         <name>BitbucketMonitor</name>
         <type>managed</type>
-        <description>Bitbucket monitor</description>
+        <description>AppDynamics Monitoring Extension for use with Atlassian Bitbucket</description>
         <monitor-configuration></monitor-configuration>
         <monitor-run-task>
                 <execution-style>periodic</execution-style>
