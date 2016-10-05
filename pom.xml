@@ -136,6 +136,9 @@
                                 <copy todir="${target.dir}">
                                     <fileset dir="${project.basedir}" includes="LICENSE.txt"/>
                                 </copy>
+                                <copy todir="${target.dir}">
+                                    <fileset dir="${project.basedir}" includes="Notice.txt"/>
+                                </copy>
                                 <zip destfile="${target.dir}-${project.version}.zip">
                                     <zipfileset dir="${target.dir}" filemode="755" prefix="BitbucketMonitor/"/>
                                 </zip>
