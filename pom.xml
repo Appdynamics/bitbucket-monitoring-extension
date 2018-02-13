@@ -6,7 +6,7 @@
 
     <groupId>com.appdynamics.extensions</groupId>
     <artifactId>bitbucket-monitoring-extension</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -137,7 +137,7 @@
                                     <fileset dir="${project.basedir}" includes="LICENSE.txt"/>
                                 </copy>
                                 <copy todir="${target.dir}">
-                                    <fileset dir="${project.basedir}" includes="Notice.txt"/>
+                                    <fileset dir="${project.basedir}" includes="NOTICE.txt"/>
                                 </copy>
                                 <zip destfile="${target.dir}-${project.version}.zip">
                                     <zipfileset dir="${target.dir}" filemode="755" prefix="BitbucketMonitor/"/>
